@@ -69,7 +69,6 @@
 			<th>designacion</th>
 			<th>horas_laboradas</th>
 			<th>salario</th>
-			<th>fecha</th>
 			<th></th>
 		</tr>
 		</thead>
@@ -81,13 +80,14 @@
 					<td th:text="${empleado.designacion}"></td>
 					<td th:text="${empleado.horas_laboradas}"></td>
 					<td th:text="${empleado.salario}"></td>
-					<td th:text="${empleado.createAt}"></td>
 					<td><a class="btn btn-primary btn-xs" th:href="@{/empleados/form/} + ${empleado.id}" th:text="'editar'"></a>
 						<a class="btn btn-danger btn-xs" th:href="@{/empleados/eliminar/} + ${empleado.id}" th:text="'eliminar'" onclick="return confirm('Está seguro de eliminar?');"></a>
 					</td>
 				</tr>
 			</tbody>
 	</table>
+	<p>Total salarios: <span th:text="${totalSalarios}" style="margin-left: 610px"></span></p>
+
 
 </div>
 

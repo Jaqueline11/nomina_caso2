@@ -1,5 +1,6 @@
 package com.ista.springboot.app.controllers;
 
+import java.util.List;
 import java.util.Map;
 
 import com.ista.springboot.app.models.entity.Empleado;
@@ -29,8 +30,10 @@ public class EmpleadoController {
 	}
 	@RequestMapping(value="/listaremp", method=RequestMethod.GET)
 	public String listaremp(Model model) {
+		List<Empleado> empleados = empleadoService.findAll();
 		model.addAttribute("titulo", "Listado de empleados");
 		model.addAttribute("empleado", empleadoService.findAll());
+		model.addAttribute("totalSalarios", empleados.stream().mapToDouble(Empleado::getSalario).sum());
 		return "listar";
 
 	}
